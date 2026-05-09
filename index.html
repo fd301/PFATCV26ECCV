@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Workshop website template" />
+  <title>PFATCV Workshop | ECCV 2026</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-soft: #0b0b0c;
+      --card: rgba(15, 15, 18, 0.72);
+      --text: #f7f7f8;
+      --muted: #9b9ba1;
+      --accent: #9d7bff;
+      --accent-2: #64e8ff;
+      --border: rgba(255, 255, 255, 0.08);
+      --glow: rgba(139, 233, 253, 0.18);
+      --shadow: 0 10px 40px rgba(0, 0, 0, 0.55);
+      --radius: 26px;
+      --max-width: 1440px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(157,123,255,0.16), transparent 22%),
+        radial-gradient(circle at 82% 12%, rgba(100,232,255,0.14), transparent 22%),
+        radial-gradient(circle at 50% 70%, rgba(255,255,255,0.03), transparent 28%),
+        #020203;
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      letter-spacing: -0.01em;
+    }
+
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 88%);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.38;
+    }
+
+    .bg-grid::before,
+    .bg-grid::after {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.14;
+    }
+
+    .bg-grid::before {
+      top: -120px;
+      left: -120px;
+      background: #9d7bff;
+    }
+
+    .bg-grid::after {
+      bottom: -140px;
+      right: -120px;
+      background: #64e8ff;
+      animation-delay: -8s;
+    }
+
+    
+      50% {
+        transform: translateY(35px) scale(1.08);
+      }
+      100% {
+        transform: translateY(0px) scale(1);
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      width: min(100% - 48px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(24px);
+      background: rgba(5, 5, 5, 0.58);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding-top: 10px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      font-size: 1.08rem;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      color: var(--accent);
+      text-shadow:
+        0 0 18px rgba(157,123,255,0.75),
+        0 0 36px rgba(100,232,255,0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.84rem;
+      color: var(--muted);
+      padding: 8px;
+      border-radius: 22px;
+      background: rgba(10,10,12,0.58);
+      border: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(18px);
+      box-shadow:
+        0 10px 40px rgba(0,0,0,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .nav-links a {
+      padding: 10px 16px;
+      border-radius: 12px;
+      letter-spacing: -0.01em;
+      text-transform: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      color: rgba(255,255,255,0.92);
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+      border: 1px solid transparent;
+      transition:
+        background 0.22s ease,
+        border-color 0.22s ease,
+        transform 0.22s ease,
+        color 0.22s ease,
+        box-shadow 0.22s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg,
+          rgba(157,123,255,0.14),
+          rgba(100,232,255,0.10));
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      z-index: -1;
+    }
+
+    .nav-links a:hover {
+      color: white;
+      background: rgba(255,255,255,0.035);
+      border-color: rgba(255,255,255,0.06);
+      box-shadow:
+        0 0 18px rgba(157,123,255,0.08),
+        inset 0 0 12px rgba(255,255,255,0.015);
+    }
+
+    .nav-links a:hover::after {
+      opacity: 1;
+    }
+
+    .menu-button {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 11px 14px;
+      cursor: pointer;
+      backdrop-filter: blur(16px);
+      box-shadow:
+        0 0 20px rgba(157,123,255,0.08),
+        inset 0 0 12px rgba(255,255,255,0.02);
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .menu-button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(157,123,255,0.18);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .hero {
+      padding: 140px 0 110px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(2,2,3,0.18), rgba(2,2,3,0.92)),
+        radial-gradient(circle at 30% 40%, rgba(157,123,255,0.14), transparent 24%),
+        radial-gradient(circle at 70% 30%, rgba(100,232,255,0.10), transparent 20%);
+      pointer-events: none;
+      transform: scale(1.03);
+    }
+
+    .hero-visual {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.18;
+      overflow: hidden;
+    }
+
+    .hero-visual svg {
+      width: min(1250px, 96vw);
+      height: auto;
+      filter:
+        drop-shadow(0 0 30px rgba(157,123,255,0.12))
+        drop-shadow(0 0 60px rgba(100,232,255,0.08));
+    }
+
+    .hero-visual path,
+    .hero-visual circle,
+    .hero-visual line {
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    
+      50% {
+        transform: translateY(14px) scale(1.015);
+      }
+      100% {
+        transform: translateY(0px) scale(1);
+      }
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.18), rgba(0,0,0,0.74)),
+        radial-gradient(circle at 52% 38%, rgba(157,123,255,0.10), transparent 24%),
+        radial-gradient(circle at 22% 70%, rgba(255,255,255,0.03), transparent 18%),
+        linear-gradient(to right, rgba(0,0,0,0.78), rgba(0,0,0,0.18), rgba(0,0,0,0.78));
+      mix-blend-mode: normal;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(340px, 0.55fr);
+      gap: 72px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 999px;
+      color: #dfd5cb;
+      background: rgba(255, 255, 255, 0.028);
+      font-size: 0.82rem;
+      margin-bottom: 26px;
+      backdrop-filter: blur(16px);
+      box-shadow:
+        0 0 28px rgba(157,123,255,0.08),
+        inset 0 0 12px rgba(255,255,255,0.02);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    h1 {
+      font-size: clamp(3.6rem, 8vw, 7.6rem);
+      max-width: 1100px;
+      font-weight: 850;
+      line-height: 0.86;
+      text-wrap: balance;
+      background: linear-gradient(to bottom, #ffffff, #cdbdff 55%, #8ff2ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 0 40px rgba(157,123,255,0.18),
+        0 0 90px rgba(100,232,255,0.10);
+      margin-bottom: 18px;
+      position: relative;
+      animation: none;
+    }
+
+    h1::before {
+      content: "";
+      position: absolute;
+      inset: -12px -24px;
+      border-radius: 40px;
+      background:
+        linear-gradient(90deg,
+          transparent 0%,
+          rgba(100,232,255,0.08) 20%,
+          rgba(157,123,255,0.16) 50%,
+          rgba(100,232,255,0.08) 80%,
+          transparent 100%);
+      filter: blur(18px);
+      opacity: 0.7;
+      animation: none;
+      z-index: -1;
+    }
+
+    h1::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 0%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(157,123,255,0.9), rgba(100,232,255,0.9));
+      box-shadow:
+        0 0 12px rgba(157,123,255,0.45),
+        0 0 24px rgba(100,232,255,0.35);
+      animation: none;
+      
+    }
+
+    
+      to {
+        opacity: 1;
+        transform: translateY(0px);
+        filter: blur(0px);
+      }
+    }
+
+    .hero-orb {
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      top: -150px;
+      left: 4%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, rgba(157,123,255,0.22), rgba(100,232,255,0.06), transparent 72%);
+      filter: blur(80px);
+      z-index: -1;
+      opacity: 0.7;
+      animation: none;
+    }
+
+    
+      50% {
+        transform: translateY(20px) scale(1.05);
+      }
+      100% {
+        transform: translateY(0px) scale(1);
+      }
+    }
+
+    .hero p {
+      max-width: 720px;
+      color: rgba(255,255,255,0.68);
+      font-size: clamp(1rem, 2vw, 1.08rem);
+      margin: 30px 0 0;
+      line-height: 1.95;
+      font-weight: 350;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 13px 22px;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.28s ease;
+      backdrop-filter: blur(12px);
+    }
+
+    .button:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow:
+        0 0 28px rgba(157,123,255,0.22),
+        0 0 60px rgba(100,232,255,0.12);
+      border-color: rgba(157,123,255,0.28);
+      }
+
+    .primary {
+      background: linear-gradient(135deg, rgba(157,123,255,0.95), rgba(100,232,255,0.95));
+      color: #050505;
+      border: none;
+      box-shadow:
+        0 0 40px rgba(157,123,255,0.20),
+        0 0 80px rgba(100,232,255,0.10);
+    }
+
+    .secondary {
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+    }
+
+    .hero-card {
+      animation: none;
+      border: 1px solid rgba(255,255,255,0.045);
+      background: linear-gradient(180deg, rgba(255,255,255,0.026), rgba(255,255,255,0.006));
+      border-radius: 46px;
+      padding: 38px;
+      box-shadow:
+        0 30px 120px rgba(0,0,0,0.72),
+        inset 0 0 40px rgba(255,255,255,0.015);
+      backdrop-filter: blur(34px);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: radial-gradient(circle, rgba(100,232,255,0.12), transparent 42%);
+      pointer-events: none;
+      animation: none;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.01));
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      pointer-events: none;
+    }
+
+    
+      50% {
+        opacity: 0.8;
+        transform: scale(1.08);
+      }
+      100% {
+        opacity: 0.4;
+        transform: scale(1);
+      }
+    }
+
+    .info-list {
+      display: grid;
+      gap: 16px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .info-list li {
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-bottom: 4px;
+    }
+
+    .value {
+      font-weight: 750;
+      font-size: 1.03rem;
+    }
+
+    section {
+      padding: 58px 0;
+    }
+
+    
+
+    .section-head {
+      margin-bottom: 32px;
+      max-width: 980px;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin: 14px 0 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      
+      border: 1px solid rgba(255,255,255,0.05);
+      background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01));
+      border-radius: 34px;
+      padding: 28px;
+      backdrop-filter: blur(24px);
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(157,123,255,0.14);
+      box-shadow:
+        0 0 60px rgba(157,123,255,0.10),
+        0 0 120px rgba(100,232,255,0.06);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .slot {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 20px;
+      padding: 26px;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.008));
+      backdrop-filter: blur(22px);
+      transition: all 0.35s ease;
+    }
+
+    .slot:hover {
+      border-color: rgba(100,232,255,0.14);
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 42px rgba(100,232,255,0.10),
+        inset 0 0 20px rgba(255,255,255,0.015);
+    }
+
+    .time {
+      color: var(--accent);
+      font-weight: 800;
+      text-shadow: 0 0 16px rgba(100,232,255,0.35);
+    }
+
+    .slot strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    
+
+    .slot p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .people {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .person {
+      text-align: center;
+    }
+
+    .avatar {
+      position: relative;
+      overflow: hidden;
+      width: 98px;
+      height: 98px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.06);
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.18), transparent 40%),
+        radial-gradient(circle at top, rgba(157,123,255,0.22), rgba(100,232,255,0.10));
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: var(--text);
+      font-size: 1.25rem;
+      box-shadow:
+        0 0 40px rgba(157,123,255,0.12),
+        inset 0 0 24px rgba(255,255,255,0.03);
+      backdrop-filter: blur(18px);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(12%) contrast(1.02) brightness(0.92);
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .person:hover .avatar img {
+      transform: scale(1.06);
+      filter: grayscale(0%) contrast(1.04) brightness(1);
+    }
+
+    .person:hover .avatar {
+      transform: scale(1.05);
+      box-shadow:
+        0 0 40px rgba(157,123,255,0.24),
+        0 0 70px rgba(100,232,255,0.12);
+    }
+
+    .person p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .dates {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .dates li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      color: var(--muted);
+    }
+
+    .dates strong {
+      color: var(--text);
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.9) 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, rgba(157,123,255,0.7) 1px, transparent 1px),
+        radial-gradient(circle at 70% 80%, rgba(100,232,255,0.7) 1px, transparent 1px),
+        radial-gradient(circle at 40% 70%, rgba(255,255,255,0.5) 1px, transparent 1px);
+      background-size: 320px 320px;
+      opacity: 0.24;
+      animation: none;
+    }
+
+    .ambient-particles {
+      display: none;
+    }
+
+    
+      8% {
+        opacity: 0.9;
+      }
+      55% {
+        opacity: 0.78;
+      }
+      100% {
+        transform: translate3d(-420px, 1180px, 0px) rotate(-35deg);
+        opacity: 0;
+      }
+    }
+
+    
+      25% {
+        transform: translate3d(18px, -22px, 0px) scale(1.04);
+      }
+      50% {
+        transform: translate3d(-14px, -38px, 0px) scale(0.98);
+      }
+      75% {
+        transform: translate3d(12px, -16px, 0px) scale(1.03);
+      }
+      100% {
+        transform: translate3d(0px, 0px, 0px) scale(1);
+      }
+    }
+
+    
+      to {
+        transform: translateY(-120px);
+      }
+    }
+
+    footer {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 54px 0 40px;
+      color: #77777e;
+      text-align: center;
+      background: rgba(255,255,255,0.01);
+      backdrop-filter: blur(10px);
+    }
+
+    .footer-text {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: #8b8b93;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .cards, .people {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      h1 {
+        line-height: 0.94;
+      }
+
+      .hero {
+        padding-top: 90px;
+      }
+
+      .hero-card {
+        padding: 28px;
+      }
+
+      .hero-visual {
+        opacity: 0.10;
+      }
+
+      .slot {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav {
+        align-items: flex-start;
+        padding: 16px 0;
+      }
+
+      .menu-button {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        top: 72px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px;
+        border: 1px solid var(--border);
+        background: rgba(17, 24, 50, 0.98);
+        border-radius: 18px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px;
+        border-radius: 12px;
+      }
+
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .hero {
+        padding-top: 48px;
+        padding-bottom: 72px;
+      }
+
+      .cards, .people {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .slot {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .dates li {
+        flex-direction: column;
+        gap: 4px;
+      }
+    
+      .container {
+        width: min(100% - 24px, var(--max-width));
+      }
+
+      h1 {
+        font-size: clamp(2.6rem, 14vw, 4.2rem);
+      }
+
+      .tag {
+        font-size: 0.68rem;
+        line-height: 1.5;
+      }
+
+      .hero p {
+        font-size: 0.96rem;
+        line-height: 1.8;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .nav-links {
+        backdrop-filter: blur(30px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="stars"></div>
+  
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">PFATCV<span>@ECCV2026</span></a>
+      <button class="menu-button" id="menuButton" aria-label="Open navigation">Menu</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#overview">Overview</a>
+        <a href="#topics">Topics</a>
+        <a href="#dates">Dates</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#speakers">Speakers</a>
+        <a href="#submission">Submission</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="600" cy="350" r="180" stroke="rgba(255,255,255,0.18)" stroke-width="1.5" />
+          <circle cx="600" cy="350" r="260" stroke="rgba(157,123,255,0.12)" stroke-width="1" />
+          <circle cx="600" cy="350" r="340" stroke="rgba(100,232,255,0.10)" stroke-width="1" />
+
+          <path d="M380 350C460 250 740 250 820 350C740 450 460 450 380 350Z"
+            stroke="rgba(255,255,255,0.22)" stroke-width="2" />
+
+          <circle cx="600" cy="350" r="58" stroke="rgba(100,232,255,0.30)" stroke-width="2" />
+          <circle cx="600" cy="350" r="16" fill="rgba(157,123,255,0.55)" />
+
+          <line x1="600" y1="90" x2="600" y2="250" stroke="rgba(255,255,255,0.10)" stroke-width="1" />
+          <line x1="600" y1="450" x2="600" y2="610" stroke="rgba(255,255,255,0.10)" stroke-width="1" />
+          <line x1="340" y1="350" x2="500" y2="350" stroke="rgba(255,255,255,0.10)" stroke-width="1" />
+          <line x1="700" y1="350" x2="860" y2="350" stroke="rgba(255,255,255,0.10)" stroke-width="1" />
+
+          <circle cx="600" cy="90" r="6" fill="rgba(255,255,255,0.55)" />
+          <circle cx="600" cy="610" r="6" fill="rgba(255,255,255,0.55)" />
+          <circle cx="340" cy="350" r="6" fill="rgba(255,255,255,0.55)" />
+          <circle cx="860" cy="350" r="6" fill="rgba(255,255,255,0.55)" />
+
+          <path d="M520 270L680 430" stroke="rgba(157,123,255,0.18)" stroke-width="1" />
+          <path d="M680 270L520 430" stroke="rgba(100,232,255,0.18)" stroke-width="1" />
+        </svg>
+      </div>
+      <div class="container hero-grid">
+        <div>
+          <div class="tag">ECCV 2026 Workshop · Malmö, Sweden · 8-9 September 2026</div>
+          <h1>Privacy, Fairness, Accountability and Transparency in Computer Vision</h1>
+          <div class="hero-orb"></div>
+          <p>
+            Advances in computer vision continue to accelerate deployment across healthcare, robotics, surveillance, and interactive systems. PFATCV brings together researchers working on privacy-preserving vision, fairness, transparency, accountability, sensing, and responsible AI to address the technical and ethical challenges emerging from modern computer vision systems.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#submission">Call for Papers</a>
+            <a class="button secondary" href="#schedule">View Schedule</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Workshop details">
+          <ul class="info-list">
+            <li>
+              <div class="label">Date</div>
+              <div class="value">8-9 September 2026</div>
+            </li>
+            <li>
+              <div class="label">Venue</div>
+              <div class="value">ECCV 2026 · Malmö, Sweden</div>
+            </li>
+            <li>
+              <div class="label">Format</div>
+              <div class="value">ECCV Workshop</div>
+            </li>
+            <li>
+              <div class="label">Submission deadline</div>
+              <div class="value">10 July 2026</div>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="overview">
+      <div class="container">
+        <div class="section-head">
+          <h2>Overview</h2>
+          <p>
+            Advances in computer vision and sensing research have accelerated innovation at an unprecedented pace and it rapidly transforms how people work and live. Computer vision techniques have outperformed human performance in several tasks, demonstrating the potential to translate in critical real applications. Nevertheless, applying these techniques broadly in sensitive domains is met with significant hurdles, including ethical considerations, safety, and privacy issues, all of which must be thoroughly considered and resolved prior to widespread adoption.
+          </p>
+          <p>
+            Furthermore, the ethical consideration of employing these technologies to continuous monitoring has been underestimated, since signatures of biometrics can be revealed even when subjects’ data are not directly identifiable. This workshop invites outstanding works on this technically challenging domain to highlight threats and ethical issues and propose solutions.
+          </p>
+          <p>
+            Progress in computer vision has outpaced the development of privacy, safety and fairness safeguards. Traditional privacy protection relies on access control, content restrictions and cryptography, yet deep learning now renders these limits insufficient to ensure the privacy or safety of models trained on sensitive data.
+          </p>
+          <p>
+            Meanwhile, the unprecedented concentration of spatio‑temporal user data creates profound, poorly understood risks in applications ranging from healthcare to robotics and surveillance. These risks are further amplified by generative AI and foundation models. Interpreting emerging regulatory frameworks (GDPR, AI Act) and designing methods to protect both models and data demand an interdisciplinary approach grounded in theoretical principles that can guarantee responsible deployment.
+          </p>
+          <p>
+            This workshop addresses a critical gap across the computer vision, sensing, cybersecurity, and ethics communities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="topics">
+      <div class="container">
+        <div class="section-head">
+          <h2>Topics of Interest</h2>
+          <p>Include, but are not limited to:</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Privacy and Security</h3>
+            <ul>
+              <li>Privacy-Preservation Technologies in Computer Vision (CV)</li>
+              <li>Privacy threats, security issues and ethical considerations in ambient and emerging sensing modalities</li>
+              <li>Radar, WiFi, LiDAR, neuromorphic, and event-based vision</li>
+              <li>Privacy-preserved Learnable Optics and hardware in CV</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Responsible and Trustworthy AI</h3>
+            <ul>
+              <li>Attribution and authenticity in computer vision</li>
+              <li>Public datasets for PFATCV</li>
+              <li>Privacy-preservation and Fairness in synthetic data generation</li>
+              <li>Metrics and Benchmarks for analysing privacy and ethical risks in CV</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Healthcare and Federated Learning</h3>
+            <ul>
+              <li>Computer Vision in Privacy-Sensitive Domains</li>
+              <li>Privacy-Enhancing Human Biometrics</li>
+              <li>Privacy, Fairness, Accountability and Transparency in Medical Imaging</li>
+              <li>Privacy, Fairness, Accountability and Transparency in Federated Learning for Computer Vision applications</li>
+              <li>Differential privacy and theoretical guarantees for privacy-preserving CV</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+<section id="dates">
+      <div class="container two-col">
+        <div class="section-head">
+          <h2>Important Dates</h2>
+          <p>All deadlines are in AoE unless stated otherwise.</p>
+        </div>
+        <div class="card">
+          <ul class="dates">
+            <li><strong>Paper submission</strong><span>10 July 2026</span></li>
+            <li><strong>Notification</strong><span>1 August 2026</span></li>
+            <li><strong>Camera ready</strong><span>7 August 2026</span></li>
+            <li><strong>Workshop date</strong><span>8-9 September 2026</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="container">
+        <div class="section-head">
+          <h2>Schedule (TBD)</h2>
+          <p>
+            The workshop schedule is currently under preparation and will be announced closer to ECCV 2026.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="slot">
+            <div class="time">TBD</div>
+            <div>
+              <strong>Invited Talks</strong>
+              <p>Keynote talks from invited academic and industry speakers.</p>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">TBD</div>
+            <div>
+              <strong>Paper Presentations</strong>
+              <p>Oral presentations and spotlight sessions from accepted papers.</p>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">TBD</div>
+            <div>
+              <strong>Poster Session</strong>
+              <p>Interactive poster and networking session.</p>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">TBD</div>
+            <div>
+              <strong>Panel Discussion</strong>
+              <p>Discussion on privacy, fairness, accountability, and transparency in computer vision.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="speakers">
+      <div class="container">
+        <div class="section-head">
+          <h2>Invited Speakers (TBC)</h2>
+          <p>Researchers and industry leaders working across responsible AI, privacy-preserving computer vision, sensing, and authenticity.</p>
+        </div>
+        <div class="people">
+          <article class="card person">
+            <div class="avatar"><img src="images/viv.png" alt="Dr. Vivek Sharma"></div>
+            <h3>Dr. Vivek Sharma</h3>
+            <p>Sony AI</p>
+          </article>
+          <article class="card person">
+            <div class="avatar"><img src="images/johncol.jpg" alt="Prof. John Collomosse"></div>
+            <h3>Prof. John Collomosse</h3>
+            <p>University of Surrey / Adobe Research</p>
+          </article>
+          <article class="card person">
+            <div class="avatar"><img src="images/irachumma.jpg" alt="Prof. Ira Assent"></div>
+            <h3>Prof. Ira Assent (TBC)</h3>
+            <p>Aarhus University</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="organizers">
+      <div class="container">
+        <div class="section-head">
+          <h2>Organizing Committee</h2>
+          <p>Organizers from academia and industry spanning computer vision, sensing, healthcare AI, robotics, privacy-preserving machine learning, and authenticity.</p>
+        </div>
+        <div class="people">
+          <article class="card person">
+            <div class="avatar"><img src="images/fd.jpg" alt="Dr. Fani Deligianni"></div>
+            <h3>Dr. Fani Deligianni</h3>
+            <p>University of Glasgow</p>
+          </article>
+          <article class="card person">
+            <div class="avatar"><img src="images/Dr_Shah.jpg" alt="Prof. Mubarak Shah"></div>
+            <h3>Prof. Mubarak Shah</h3>
+            <p>University of Central Florida</p>
+          </article>
+          <article class="card person">
+            <div class="avatar"><img src="images/KamalNasrollahi.jpg" alt="Dr. Kamal Nasrollahi"></div>
+            <h3>Dr. Kamal Nasrollahi</h3>
+            <p>Aalborg University</p>
+          </article>
+          <article class="card person">
+            <div class="avatar"><img src="images/khamis.jpg" alt="Prof. Mohamed Khamis"></div>
+            <h3>Prof. Mohamed Khamis</h3>
+            <p>University of Glasgow</p>
+          </article>
+          <article class="card person">
+            <div class="avatar"><img src="images/marg.png" alt="Prof. Margarita Chli"></div>
+            <h3>Prof. Margarita Chli</h3>
+            <p>University of Cyprus / ETH Zurich</p>
+          </article>
+          <article class="card person">
+            <div class="avatar"><img src="images/qammar.jpg" alt="Prof. Qammer Abbasi"></div>
+            <h3>Prof. Qammer Abbasi</h3>
+            <p>University of Glasgow</p>
+          </article>
+          <article class="card person">
+            <div class="avatar"><img src="images/imran.jpg" alt="Prof. Muhammad Imran"></div>
+            <h3>Prof. Muhammad Imran</h3>
+            <p>University of Glasgow</p>
+          </article>
+          <article class="card person">
+            <div class="avatar"><img src="images/pai.jpg" alt="Dr. Ng Pai Chet"></div>
+            <h3>Dr. Ng Pai Chet</h3>
+            <p>Singapore Institute of Technology</p>
+          </article>
+          <article class="card person">
+            <div class="avatar"><img src="images/gu_da.jpg" alt="Dr. Xiao Gu"></div>
+            <h3>Dr. Xiao Gu</h3>
+            <p>University of Oxford</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="submission">
+      <div class="container two-col">
+        <div>
+          <div class="section-head">
+            <h2>Call for Papers</h2>
+            <p>
+              We invite submissions on privacy-preserving computer vision, fairness-aware learning, transparency and accountability in AI, privacy-sensitive sensing modalities, authenticity and provenance, medical imaging, federated learning, and responsible deployment of computer vision systems.
+            </p>
+          </div>
+          <div class="actions">
+            <a class="button primary" href="javascript:void(0)">OpenReview Portal (TBD)</a>
+            <a class="button secondary" href="javascript:void(0)">Accepted Papers (TBD)</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Submission Guidelines</h3>
+          <ul>
+            <li>All accepted papers will be published in the ECCV 2026 Workshop Proceedings.</li>
+            <li>Submissions should follow the ECCV conference formatting guidelines.</li>
+            <li>Review: double blind unless the host conference states otherwise.</li>
+            <li>Submission portal link (TBD).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="card">
+          <h2>Contact</h2>
+          <p>
+            For questions, contact <a href="mailto:fani.deligianni@glasgow.ac.uk">fani.deligianni@glasgow.ac.uk</a>.
+            Primary contact for workshop inquiries and submissions.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-text">
+        © 2026 PFATCV Workshop at ECCV<br>
+        University of Glasgow · University of Surrey · Sony AI · Adobe Research
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    
+
+    const menuButton = document.getElementById('menuButton');
+    const navLinks = document.getElementById('navLinks');
+
+    menuButton.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+  </script>
+</body>
+</html>
