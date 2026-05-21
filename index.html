@@ -7,8 +7,8 @@
   <title>PFATCV Workshop | ECCV 2026</title>
   <style>
     :root {
-      --bg: #050505;
-      --bg-soft: #0b0b0c;
+      --bg: #030712;
+      --bg-soft: #0b132b;
       --card: rgba(15, 15, 18, 0.72);
       --text: #f7f7f8;
       --muted: #9b9ba1;
@@ -33,15 +33,69 @@
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 18% 18%, rgba(157,123,255,0.16), transparent 22%),
-        radial-gradient(circle at 82% 12%, rgba(100,232,255,0.14), transparent 22%),
-        radial-gradient(circle at 50% 70%, rgba(255,255,255,0.03), transparent 28%),
-        #020203;
+    radial-gradient(circle at 18% 18%, rgba(157,123,255,0.18), transparent 25%),
+    radial-gradient(circle at 82% 12%, rgba(100,232,255,0.20), transparent 25%),
+    radial-gradient(circle at 50% 70%, rgba(30,58,138,0.25), transparent 40%), /* Adds deep blue center glow */
+    #030712;
       color: var(--text);
       line-height: 1.65;
       overflow-x: hidden;
       letter-spacing: -0.01em;
     }
+
+    /* Submission Details Image Replication Styles */
+.details-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.details-box h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+.details-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: start;
+}
+
+.details-row:last-child {
+  padding-bottom: 0;
+}
+
+.details-label {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.details-val {
+  font-size: 0.98rem;
+  font-weight: 700; /* Bold text matching the uploaded design */
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.details-val a {
+  color: var(--accent-2);
+  text-decoration: underline;
+}
+
+/* Ensure responsiveness on mobile views */
+@media (max-width: 680px) {
+  .details-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 16px 0;
+  }
+}
 
     .bg-grid {
       position: fixed;
@@ -111,18 +165,18 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(24px);
-      background: rgba(5, 5, 5, 0.58);
+      background: rgba(3, 7, 18, 0.58);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     .nav {
-      min-height: 88px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding-top: 10px;
-    }
+  min-height: 76px; /* Slightly reduced from 88px for a sleeker profile */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px; /* Reduced from 18px */
+  padding-top: 4px;
+}
 
     .brand {
       font-weight: 800;
@@ -139,41 +193,36 @@
     }
 
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.84rem;
-      color: var(--muted);
-      padding: 8px;
-      border-radius: 22px;
-      background: rgba(10,10,12,0.58);
-      border: 1px solid rgba(255,255,255,0.06);
-      backdrop-filter: blur(18px);
-      box-shadow:
-        0 10px 40px rgba(0,0,0,0.28),
-        inset 0 1px 0 rgba(255,255,255,0.04);
-    }
+  display: flex;
+  align-items: center;
+  gap: 4px; /* Reduced from 12px to compress layout cleanly */
+  font-size: 0.84rem;
+  color: var(--muted);
+  padding: 6px; /* Trimmed padding */
+  border-radius: 22px;
+  background: rgba(10,10,12,0.58);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+}
 
-    .nav-links a {
-      padding: 10px 16px;
-      border-radius: 12px;
-      letter-spacing: -0.01em;
-      text-transform: none;
-      font-size: 0.88rem;
-      font-weight: 700;
-      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-      color: rgba(255,255,255,0.92);
-      position: relative;
-      overflow: hidden;
-      background: transparent;
-      border: 1px solid transparent;
-      transition:
-        background 0.22s ease,
-        border-color 0.22s ease,
-        transform 0.22s ease,
-        color 0.22s ease,
-        box-shadow 0.22s ease;
-    }
+.nav-links a {
+  padding: 8px 12px; /* Reduced link padding from 10px 16px */
+  border-radius: 12px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  font-size: 0.86rem;
+  font-weight: 700;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  color: rgba(255,255,255,0.92);
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.22s ease;
+}
 
     .nav-links a::after {
       content: "";
@@ -473,6 +522,18 @@
       overflow: hidden;
       isolation: isolate;
     }
+    .awards-alert {
+  margin-top: 18px;
+  padding: 16px 20px;
+  background: rgba(255, 215, 0, 0.05);
+  border: 1px dashed rgba(255, 215, 0, 0.25);
+  border-radius: 18px;
+  font-size: 1.0rem;
+  line-height: 1.5;
+  color: #ffd700; /* Yellow text to match your requirement */
+  font-weight: 500;
+  text-align: center;
+}
 
     .hero-card::before {
       content: "";
@@ -737,6 +798,57 @@
       opacity: 0.24;
       animation: none;
     }
+    /* Live Countdown Clock Styles */
+.deadline-countdown-container {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 10;
+  margin-top: 14px;
+  pointer-events: none; /* Allows clicks to pass through empty space */
+}
+
+.countdown-box {
+  pointer-events: auto; /* Re-enables interactions inside the box */
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  background: rgba(11, 19, 43, 0.65);
+  border: 1px solid rgba(100, 232, 255, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  font-family: Inter, sans-serif;
+}
+
+.countdown-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.countdown-digits {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--accent-2); /* Matching your stylish blue tint */
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 12px rgba(100, 232, 255, 0.35);
+}
+
+@media (max-width: 680px) {
+  .deadline-countdown-container {
+    justify-content: center;
+    margin-top: 10px;
+    padding: 0 12px;
+  }
+  .countdown-box {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
 
     .ambient-particles {
       display: none;
@@ -792,7 +904,47 @@
       line-height: 1.8;
       color: #8b8b93;
     }
+.editions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+}
 
+.edition-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01));
+  border-radius: 34px;
+  backdrop-filter: blur(24px);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.edition-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(157, 123, 255, 0.14);
+  box-shadow: 0 0 60px rgba(157, 123, 255, 0.10);
+}
+
+.edition-meta h3 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.edition-meta p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.edition-link {
+  display: inline-block;
+  font-size: 0.95rem;
+  color: #8ff2ff;
+  font-weight: 700;
+}
     @media (max-width: 900px) {
       .hero-grid, .two-col {
         grid-template-columns: 1fr;
@@ -928,16 +1080,23 @@
         <a href="#overview">Overview</a>
         <a href="#topics">Topics</a>
         <a href="#dates">Dates</a>
-        <a href="#schedule">Schedule</a>
+        <!-- <a href="#schedule">Schedule</a> -->
         <a href="#speakers">Speakers</a>
         <a href="#organizers">Organizing Committee</a>
         <a href="#technical-committee">Technical Committee</a>
         <a href="#reviewers">Reviewer Invitation</a>
         <a href="#submission">Submission</a>
         <a href="#contact">Contact</a>
+        <a href="#editions">Previous Editions</a>
       </nav>
     </div>
   </header>
+  <div class="container deadline-countdown-container">
+    <div class="countdown-box" id="submissionCountdown">
+      <span class="countdown-label">⏰ Submission Deadline In:</span>
+      <span class="countdown-digits" id="countdownTimer">Loading...</span>
+    </div>
+  </div>
 
   <main id="top">
     <section class="hero">
@@ -973,8 +1132,8 @@
           <h1>Privacy, Fairness, Accountability and Transparency in Computer Vision</h1>
           <div class="hero-orb"></div>
           <p>
-            Advances in computer vision continue to accelerate deployment across healthcare, robotics, surveillance, and interactive systems. PFATCV brings together researchers working on privacy-preserving vision, fairness, transparency, accountability, sensing, and responsible AI to address the technical and ethical challenges emerging from modern computer vision systems.
-          </p>
+  <strong>Advances in computer vision continue to accelerate deployment across healthcare, robotics, surveillance, and interactive systems. PFATCV brings together researchers working on privacy-preserving vision, fairness, transparency, accountability, sensing, and responsible AI to address the technical and ethical challenges emerging from modern computer vision systems.</strong>
+</p>
           <div class="actions">
             <a class="button primary" href="#submission">Call for Papers</a>
             <a class="button secondary" href="#schedule">View Schedule</a>
@@ -992,14 +1151,30 @@
               <div class="value">ECCV 2026 · Malmö, Sweden</div>
             </li>
             <li>
+              <div class="label">Submission Start Date</div>
+              <div class="value">20 May 2026</div>
+            </li>
+            <li>
+              <div class="label">Abstract Deadline</div>
+              <div class="value">03 July 2026</div>
+            </li>
+            <li>
+              <div class="label">Full Submission Deadline</div>
+              <div class="value">10 July 2026</div>
+            </li>
+            <li>
+              <div class="label">Poster Submissions Deadline</div>
+              <div class="value">10 July 2026</div>
+            </li>
+            <li>
               <div class="label">Format</div>
               <div class="value">ECCV Workshop</div>
             </li>
-            <li>
-              <div class="label">Submission deadline</div>
-              <div class="value">10 July 2026</div>
-            </li>
+
           </ul>
+          <div class="awards-alert">
+            🏆 Awards will be given for Best Paper, Best Paper Runner-up, and Best Poster.
+          </div>
         </aside>
       </div>
     </section>
@@ -1009,19 +1184,19 @@
         <div class="section-head">
           <h2>Overview</h2>
           <p>
-            Advances in computer vision and sensing research have accelerated innovation at an unprecedented pace and it rapidly transforms how people work and live. Computer vision techniques have outperformed human performance in several tasks, demonstrating the potential to translate in critical real applications. Nevertheless, applying these techniques broadly in sensitive domains is met with significant hurdles, including ethical considerations, safety, and privacy issues, all of which must be thoroughly considered and resolved prior to widespread adoption.
+            <strong>Advances in computer vision and sensing research have accelerated innovation at an unprecedented pace and it rapidly transforms how people work and live. Computer vision techniques have outperformed human performance in several tasks, demonstrating the potential to translate in critical real applications. Nevertheless, applying these techniques broadly in sensitive domains is met with significant hurdles, including ethical considerations, safety, and privacy issues, all of which must be thoroughly considered and resolved prior to widespread adoption.</strong>
           </p>
           <p>
-            Furthermore, the ethical consideration of employing these technologies to continuous monitoring has been underestimated, since signatures of biometrics can be revealed even when subjects’ data are not directly identifiable. This workshop invites outstanding works on this technically challenging domain to highlight threats and ethical issues and propose solutions.
+            <strong>Furthermore, the ethical consideration of employing these technologies to continuous monitoring has been underestimated, since signatures of biometrics can be revealed even when subjects’ data are not directly identifiable. This workshop invites outstanding works on this technically challenging domain to highlight threats and ethical issues and propose solutions.</strong>
           </p>
           <p>
-            Progress in computer vision has outpaced the development of privacy, safety and fairness safeguards. Traditional privacy protection relies on access control, content restrictions and cryptography, yet deep learning now renders these limits insufficient to ensure the privacy or safety of models trained on sensitive data.
+            <strong>Progress in computer vision has outpaced the development of privacy, safety and fairness safeguards. Traditional privacy protection relies on access control, content restrictions and cryptography, yet deep learning now renders these limits insufficient to ensure the privacy or safety of models trained on sensitive data.</strong>
           </p>
           <p>
-            Meanwhile, the unprecedented concentration of spatio‑temporal user data creates profound, poorly understood risks in applications ranging from healthcare to robotics and surveillance. These risks are further amplified by generative AI and foundation models. Interpreting emerging regulatory frameworks (GDPR, AI Act) and designing methods to protect both models and data demand an interdisciplinary approach grounded in theoretical principles that can guarantee responsible deployment.
+            <strong>Meanwhile, the unprecedented concentration of spatio‑temporal user data creates profound, poorly understood risks in applications ranging from healthcare to robotics and surveillance. These risks are further amplified by generative AI and foundation models. Interpreting emerging regulatory frameworks (GDPR, AI Act) and designing methods to protect both models and data demand an interdisciplinary approach grounded in theoretical principles that can guarantee responsible deployment.</strong>
           </p>
           <p>
-            This workshop addresses a critical gap across the computer vision, sensing, cybersecurity, and ethics communities.
+            <strong>This workshop addresses a critical gap across the computer vision, sensing, cybersecurity, and ethics communities.</strong>
           </p>
         </div>
       </div>
@@ -1068,6 +1243,7 @@
         </div>
       </div>
     </section>
+    
 <section id="dates">
       <div class="container">
         <div class="section-head">
@@ -1084,7 +1260,7 @@
         </div>
       </div>
     </section>
-
+<!--
     <section id="schedule">
       <div class="container">
         <div class="section-head">
@@ -1129,11 +1305,11 @@
         </div>
       </div>
     </section>
-
+  -->
     <section id="speakers">
       <div class="container">
         <div class="section-head">
-          <h2>Invited Speakers (TBC)</h2>
+          <h2>Invited Speakers</h2>
           <p>Researchers and industry leaders working across responsible AI, privacy-preserving computer vision, sensing, and authenticity.</p>
         </div>
         <div class="people">
@@ -1159,7 +1335,7 @@
 
           <article class="card person">
             <div class="avatar"><img src="images/irachumma.jpg" alt="Prof. Ira Assent"></div>
-            <h3>Prof. Ira Assent (TBC)</h3>
+            <h3>Prof. Ira Assent</h3>
             <p>Aarhus University</p>
             <a 
     href="https://pure.au.dk/portal/en/persons/ira@cs.au.dk/"
@@ -1393,54 +1569,54 @@
   <ul style="margin:0; padding-left:20px; color:#d8d8d8; line-height:2; font-size:1.02rem;">
     
     <li>
-      Kaushik Bhargav Sivangi —
+      Kaushik Bhargav Sivangi — University of Glasgow:
       <a href="mailto:k.sivangi.1@research.gla.ac.uk">
         k.sivangi.1@research.gla.ac.uk
       </a>
     </li>
 
     <li>
-      Muhammad Ilham Rizqyawan —
+      Muhammad Ilham Rizqyawan — University of Glasgow:
       <a href="mailto:3075797R@student.gla.ac.uk">
         3075797R@student.gla.ac.uk
       </a>
     </li>
 
     <li>
-      S. Mohammad Sheikholeslami —
+      S. Mohammad Sheikholeslami — University of Toronto:
       -
     </li>
 
     <li>
-      Jinpei Han —
+      Jinpei Han — Imperial College London:
       <a href="mailto:J.han20@imperial.ac.uk">
         J.han20@imperial.ac.uk
       </a>
     </li>
 
     <li>
-      Wei Tang —
+      Wei Tang — City University of Hong Kong:
       <a href="mailto:wetang7-c@my.cityu.edu.hk">
         wetang7-c@my.cityu.edu.hk
       </a>
     </li>
 
     <li>
-      Pati Palo —
+      Pati Palo — University of Oxford:
       <a href="mailto:pati.palo@eng.ox.ac.uk">
         pati.palo@eng.ox.ac.uk
       </a>
     </li>
 
     <li>
-      Mattia Carletti —
+      Mattia Carletti — University of Oxford:
       <a href="mailto:mattia.carletti@eng.ox.ac.uk">
         mattia.carletti@eng.ox.ac.uk
       </a>
     </li>
 
     <li>
-      Fredrik Gustafsson —
+      Fredrik Gustafsson — University of Oxford:
       <a href="mailto:fredrik.gustafsson@eng.ox.ac.uk">
         fredrik.gustafsson@eng.ox.ac.uk
       </a>
@@ -1456,7 +1632,7 @@
     <div class="card">
       <h2>Reviewer Invitation</h2>
       <p>
-        We welcome qualified reviewers and researchers working in privacy-preserving computer vision, trustworthy AI, sensing, security, fairness, transparency, and responsible machine learning to join our reviewer pool for PFATCV @ ECCV 2026.
+       <strong> We welcome qualified reviewers and researchers working in privacy-preserving computer vision, trustworthy AI, sensing, security, fairness, transparency, and responsible machine learning to join our reviewer pool for PFATCV @ ECCV 2026. </strongstrong>
       </p>
     </div>
   </div>
@@ -1475,16 +1651,32 @@
             <a class="button secondary" href="javascript:void(0)">Accepted Papers (TBD)</a>
           </div>
         </div>
-        <div class="card">
-          <h3>Submission Guidelines</h3>
-          <ul>
-            <li>All accepted papers will be published in the ECCV 2026 Workshop Proceedings.</li>
-            <li>Submissions should follow the ECCV conference formatting guidelines.</li>
-            <li>Review: double blind unless the host conference states otherwise.</li>
-            <li>Submission portal link (TBD).</li>
-          </ul>
+
+        <div class="card details-box">
+          <h3>Submission Details</h3>
+          
+          <div class="details-row">
+            <div class="details-label">Format</div>
+            <div class="details-val">
+              <a href="https://eccv.ecva.net/Conferences/2026/CallForWorkshops">ECCV workshop template</a>
+            </div>
+          </div>
+
+          <div class="details-row">
+            <div class="details-label">Full paper submissions</div>
+            <div class="details-val">
+              Up to 14 pages, excluding references. Accepted papers will be included in the proceedings.
+            </div>
+          </div>
+
+          <div class="details-row">
+            <div class="details-label">Poster paper submissions</div>
+            <div class="details-val">
+              2–6 pages.
+            </div>
+          </div>
         </div>
-      </div>
+        </div>
     </section>
 
     <section id="contact">
@@ -1495,6 +1687,37 @@
             For questions, contact <a href="mailto:fani.deligianni@glasgow.ac.uk">fani.deligianni@glasgow.ac.uk</a>.
             Primary contact for workshop inquiries and submissions.
           </p>
+        </div>
+      </div>
+    </section>
+    <section id="editions">
+      <div class="container">
+        <div class="section-head">
+          <h2>Previous Editions</h2>
+
+        </div>
+        <div class="editions-grid">
+          
+          <!-- Copy/paste this card structure to add more iterations later -->
+          <article class="edition-card">
+            <div class="edition-meta">
+              <h3>PFATCV 2024</h3>
+              <p>1st Workshop Edition · BMVC 2024</p>
+            </div>
+            <a href="https://sites.google.com/view/pfatcvbmvc24/home?pli=1" target="_blank" class="edition-link">
+              Website ↗
+            </a>
+          </article>
+          <article class="edition-card">
+            <div class="edition-meta">
+              <h3>PFATCV 2025</h3>
+              <p>2nd Workshop Edition · BMVC 2025</p>
+            </div>
+            <a href="https://sites.google.com/view/pfatcvbmvc25/home" target="_blank" class="edition-link">
+              Website ↗
+            </a>
+          </article>
+
         </div>
       </div>
     </section>
@@ -1512,6 +1735,7 @@
   <script>
     
 
+    // --- Your existing navigation menu code ---
     const menuButton = document.getElementById('menuButton');
     const navLinks = document.getElementById('navLinks');
 
@@ -1522,6 +1746,37 @@
     navLinks.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
+
+
+    // ==========================================
+    // PASTE THE NEW COUNTDOWN CODE DIRECTLY HERE:
+    // ==========================================
+    const targetDate = new Date("July 10, 2026 23:59:59 UTC-12").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        document.getElementById("countdownTimer").innerText = "Submissions Closed";
+        clearInterval(countdownInterval);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdownTimer").innerText = 
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    const countdownInterval = setInterval(updateCountdown, 1000);
+
+
   </script>
+  
 </body>
 </html>
