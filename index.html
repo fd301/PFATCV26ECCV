@@ -946,17 +946,16 @@
   font-weight: 700;
 }
 .sponsors-strip {
-  margin-top: 42px;
   display: flex;
-  justify-content: center; /* left aligned */
-  
+  justify-content: center;
   align-items: center;
   gap: 72px;
   flex-wrap: wrap;
+  padding: 42px;
 }
 
 .sponsors-strip img {
-  max-height: 150px; /* bigger logos */
+  max-height: 90px;
   width: auto;
   object-fit: contain;
   opacity: 0.95;
@@ -970,8 +969,8 @@
 
 @media (max-width: 680px) {
   .sponsors-strip {
-    justify-content: center;
     gap: 28px;
+    padding: 28px;
   }
 
   .sponsors-strip img {
@@ -1121,6 +1120,7 @@
         <a href="#submission">Submission</a>
         <a href="#contact">Contact</a>
         <a href="#editions">Previous Editions</a>
+        <a href="#sponsors">Sponsors</a>
       </nav>
     </div>
   </header>
@@ -1696,7 +1696,19 @@
     </div>
   </div>
 </section>
+<section id="sponsors">
+  <div class="container">
+    <div class="section-head">
+      <h2>Sponsors</h2>
+    </div>
 
+    <div class="card sponsors-strip">
+      <img src="images/epsrc.png" alt="Sponsor 1">
+      <img src="images/acadof-removebg-preview.png" alt="Sponsor 2">
+      <img src="images/rsc-removebg-preview.png" alt="Sponsor 3">
+    </div>
+  </div>
+</section>
 
     <section id="contact">
       <div class="container">
