@@ -945,6 +945,39 @@
   color: #8ff2ff;
   font-weight: 700;
 }
+.sponsors-strip {
+  margin-top: 42px;
+  display: flex;
+  justify-content: center-start; /* left aligned */
+  padding-left: 300px;
+  align-items: center;
+  gap: 72px;
+  flex-wrap: wrap;
+}
+
+.sponsors-strip img {
+  max-height: 150px; /* bigger logos */
+  width: auto;
+  object-fit: contain;
+  opacity: 0.95;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.sponsors-strip img:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 680px) {
+  .sponsors-strip {
+    justify-content: center;
+    gap: 28px;
+  }
+
+  .sponsors-strip img {
+    max-height: 56px;
+  }
+}
     @media (max-width: 900px) {
       .hero-grid, .two-col {
         grid-template-columns: 1fr;
@@ -1716,6 +1749,11 @@
         University of Glasgow · University of Surrey · Sony AI · Adobe Research
       </div>
     </div>
+    <div class="sponsors-strip">
+  <img src="images/epsrc.png" alt="Sponsor 1">
+  <img src="images/acadof-removebg-preview.png" alt="Sponsor 2">
+  <img src="images/rsc-removebg-preview.png" alt="Sponsor 3">
+</div>
   </footer>
 
   <script>
