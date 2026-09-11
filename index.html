@@ -1124,6 +1124,7 @@
         <a href="#contact">Contact</a>
         <a href="#editions">Previous Editions</a>
         <a href="#sponsors">Sponsors</a>
+        <a href="#photos">Photos</a>  
       </nav>
     </div>
   </header>
@@ -1173,6 +1174,7 @@
           <div class="actions">
             <a class="button primary" href="#submission">Submissions</a>
             <a class="button primary" href="#programme">View Schedule</a>
+            <a class="button primary" href="#photos">View Photos</a>
           </div>
         </div>
 
@@ -2300,6 +2302,190 @@
         </div>
       </div>
     </section>
+
+  </section>
+    <section id="photos">
+      <div class="container">
+        <div class="section-head">
+          <h2>Photos</h2>
+    </div>
+
+
+    <!-- Image carousel -->
+    <div style="position: relative; width: 100%; margin: 40px 0;">
+
+      <!-- Left button -->
+      <button id="prevBtn" style="
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        width: 45px;
+        height: 45px;
+        border: none;
+        border-radius: 50%;
+        background: rgba(0,0,0,0.6);
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+      ">
+        &#10094;
+      </button>
+
+      <!-- Carousel window -->
+      <div style="overflow: hidden; width: 100%;">
+        <div id="imageCarousel" style="
+          display: flex;
+          gap: 12px;
+          width: max-content;
+          will-change: transform;
+        ">
+
+          <!-- Original images -->
+          <img src="images/IMG_00.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_01.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_9352.jpeg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_9360.jpeg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_9365.jpeg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_02.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_03.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_04.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_05.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_06.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_07.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_08.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_09.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_10.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_11.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_12.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_13.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_14.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+
+          
+
+
+
+          <!-- Duplicate images - to make rotation seamless -->
+                    <img src="images/IMG_00.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_01.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_9352.jpeg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_9360.jpeg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_9365.jpeg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_02.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_03.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_04.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_05.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_06.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_07.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_08.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_09.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_10.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_11.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_12.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_13.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+          <img src="images/IMG_14.jpg" style="width: calc((100vw - 36px) / 4); aspect-ratio: 1 / 1; object-fit: cover; flex-shrink: 0;">
+
+        </div>
+      </div>
+
+      <!-- Right button -->
+      <button id="nextBtn" style="
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        width: 45px;
+        height: 45px;
+        border: none;
+        border-radius: 50%;
+        background: rgba(0,0,0,0.6);
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+      ">
+        &#10095;
+      </button>
+
+    </div>
+
+
+    <script>
+      const carousel = document.getElementById("imageCarousel");
+      const nextBtn = document.getElementById("nextBtn");
+      const prevBtn = document.getElementById("prevBtn");
+
+      const totalImages = 18;
+      let index = 0;
+
+      function getMoveAmount() {
+        const imageWidth = carousel.children[0].offsetWidth;
+        return imageWidth + 12;
+      }
+
+      function moveCarousel(direction) {
+        index += direction;
+
+        if (index >= totalImages) {
+          index = 0;
+
+          carousel.style.transition = "none";
+          carousel.style.transform = "translateX(0)";
+
+          // Force browser to apply reset before moving again
+          void carousel.offsetWidth;
+
+          index = 1;
+        }
+
+
+        if (index < 0) {
+          carousel.style.transition = "none";
+          carousel.style.transform =
+            `translateX(-${totalImages * getMoveAmount()}px)`;
+
+          void carousel.offsetWidth;
+
+          index = totalImages - 1;
+        }
+
+        carousel.style.transition = "transform 0.8s ease";
+        carousel.style.transform =
+          `translateX(-${index * getMoveAmount()}px)`;
+      }
+
+
+      // Next button
+      nextBtn.addEventListener("click", function () {
+        moveCarousel(1);
+        resetTimer();
+      });
+
+
+      // Previous button
+      prevBtn.addEventListener("click", function () {
+        moveCarousel(-1);
+        resetTimer();
+      });
+
+
+      // Automatic rotation - Controls speed
+      let autoRotate = setInterval(() => {
+        moveCarousel(1);
+      }, 2500);
+
+
+      // Reset automatic timer after manual click
+      function resetTimer() {
+        clearInterval(autoRotate);
+
+        autoRotate = setInterval(() => {
+          moveCarousel(1);
+        }, 2500);
+      }
+    </script>
+        
   </main>
 
   <footer>
